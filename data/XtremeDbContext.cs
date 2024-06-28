@@ -19,6 +19,7 @@ namespace Xtreme.Data
         public DbSet<Vehicles> Vehicles { get; set; }
         public DbSet<TypeOfVehicle> TypeOfVehicles { get; set; }
         public DbSet<Size> Sizes { get; set; }
+        public DbSet<Brand> Brands { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -111,6 +112,7 @@ namespace Xtreme.Data
                 Id = 1,
                 TypeId = 1,
                 SizeId = 1,
+                BrandId = 1,
                 ImageUrl = "https://example.com/car.jpg"
             },
             new Vehicles
@@ -118,6 +120,7 @@ namespace Xtreme.Data
                 Id = 2,
                 TypeId = 2,
                 SizeId = 2,
+                BrandId = 2,
                 ImageUrl = "https://example.com/car.jpg"
             });
 
@@ -142,106 +145,58 @@ namespace Xtreme.Data
                 Type = "Utv"
             });
 
-            modelBuilder.Entity<Size>().HasData(new Size
-            {
-                Id = 1,
-                CubicCentimeters = 50
-            },
-            new Size
-            {
-                Id = 2,
-                CubicCentimeters = 100
-            },
-            new Size
-            {
-                Id = 3,
-                CubicCentimeters = 110
-            },
-            new Size
-            {
-                Id = 4,
-                CubicCentimeters = 125
-            },
-            new Size
-            {
-                Id = 5,
-                CubicCentimeters = 200
-            },
-            new Size
-            {
-                Id = 6,
-                CubicCentimeters = 250
-            },
-            new Size
-            {
-                Id = 7,
-                CubicCentimeters = 300
-            },
-            new Size
-            {
-                Id = 8,
-                CubicCentimeters = 350
-            },
-            new Size
-            {
-                Id = 9,
-                CubicCentimeters = 400
-            },
-            new Size
-            {
-                Id = 10,
-                CubicCentimeters = 450
-            },
-            new Size
-            {
-                Id = 11,
-                CubicCentimeters = 500
-            },
-            new Size
-            {
-                Id = 12,
-                CubicCentimeters = 600
-            },
-            new Size
-            {
-                Id = 13,
-                CubicCentimeters = 650
-            },
-            new Size
-            {
-                Id = 14,
-                CubicCentimeters = 750
-            },
-            new Size
-            {
-                Id = 15,
-                CubicCentimeters = 900
-            },
-            new Size
-            {
-                Id = 16,
-                CubicCentimeters = 1000
-            },
-            new Size
-            {
-                Id = 17,
-                CubicCentimeters = 1100
-            },
-            new Size
-            {
-                Id = 18,
-                CubicCentimeters = 1200
-            },
-            new Size
-            {
-                Id = 19,
-                CubicCentimeters = 1300
-            },
-            new Size
-            {
-                Id = 20,
-                CubicCentimeters = 1400
-            });
+            modelBuilder.Entity<Brand>().HasData(
+                new Brand { Id = 1, Make = "Honda" },
+                new Brand { Id = 2, Make = "Yamaha" },
+                new Brand { Id = 3, Make = "Kawasaki" },
+                new Brand { Id = 4, Make = "KTM" },
+                new Brand { Id = 5, Make = "Suzuki" },
+                new Brand { Id = 6, Make = "Polaris" },
+                new Brand { Id = 7, Make = "Can-Am" },
+                new Brand { Id = 8, Make = "BMW" },
+                new Brand { Id = 9, Make = "Ducati" },
+                new Brand { Id = 10, Make = "Harley-Davidson" },
+                new Brand { Id = 11, Make = "CF Moto" },
+                new Brand { Id = 12, Make = "Triumph" },
+                new Brand { Id = 13, Make = "Beta" },
+                new Brand { Id = 14, Make = "GasGas" },
+                new Brand { Id = 15, Make = "Husqvarna" },
+                new Brand { Id = 16, Make = "Aprilia" },
+                new Brand { Id = 17, Make = "MV Agusta" },
+                new Brand { Id = 18, Make = "Royal Enfield" },
+                new Brand { Id = 19, Make = "Indian Motorcycle" },
+                new Brand { Id = 20, Make = "Moto Guzzi" },
+                new Brand { Id = 21, Make = "Benelli" },
+                new Brand { Id = 22, Make = "Bultaco" },
+                new Brand { Id = 23, Make = "Sherco" },
+                new Brand { Id = 24, Make = "Arctic Cat" },
+                new Brand { Id = 25, Make = "Kymco" },
+                new Brand { Id = 26, Make = "Hyosung" }
+            );
+
+            modelBuilder.Entity<Size>().HasData(
+                new Size { Id = 1, CubicCentimeters = 50 },
+                new Size { Id = 2, CubicCentimeters = 100 },
+                new Size { Id = 3, CubicCentimeters = 110 },
+                new Size { Id = 4, CubicCentimeters = 125 },
+                new Size { Id = 5, CubicCentimeters = 200 },
+                new Size { Id = 6, CubicCentimeters = 250 },
+                new Size { Id = 7, CubicCentimeters = 300 },
+                new Size { Id = 8, CubicCentimeters = 350 },
+                new Size { Id = 9, CubicCentimeters = 400 },
+                new Size { Id = 10, CubicCentimeters = 450 },
+                new Size { Id = 11, CubicCentimeters = 500 },
+                new Size { Id = 12, CubicCentimeters = 600 },
+                new Size { Id = 13, CubicCentimeters = 650 },
+                new Size { Id = 14, CubicCentimeters = 750 },
+                new Size { Id = 15, CubicCentimeters = 900 },
+                new Size { Id = 16, CubicCentimeters = 1000 },
+                new Size { Id = 17, CubicCentimeters = 1100 },
+                new Size { Id = 18, CubicCentimeters = 1200 },
+                new Size { Id = 19, CubicCentimeters = 1300 },
+                new Size { Id = 20, CubicCentimeters = 1400}
+                );
         }
     }
 }
+

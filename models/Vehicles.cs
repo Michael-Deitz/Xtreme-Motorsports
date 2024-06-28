@@ -5,6 +5,7 @@ namespace Xtreme.Models;
 public class Vehicles
 {
     public int Id { get; set; }
+    public int BrandId { get; set; }
     [Required]
     public int TypeId { get; set; }
     [Required]
