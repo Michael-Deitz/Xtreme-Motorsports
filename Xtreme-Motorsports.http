@@ -1,0 +1,6 @@
+@Xtreme_Motorsports_HostAddress = http://localhost:5229
+
+GET {{Xtreme_Motorsports_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
