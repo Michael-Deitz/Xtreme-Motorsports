@@ -32,4 +32,16 @@ public class SizeController : ControllerBase
         }));
     }
 
+    [HttpGet("{id}")]
+
+    public IActionResult GetSizesById(int id)
+    {
+        return Ok(_dbContext.Sizes
+        .Where(s => s.Id == id)
+        .Select(s => new SizeNoNavDTO
+        {
+            Id = s.Id,
+            CubicCentimeters = s.CubicCentimeters
+        }));
+    }
 }

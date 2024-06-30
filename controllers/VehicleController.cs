@@ -56,4 +56,40 @@ public class VehicleController : ControllerBase
         return Ok(vehicles);
     }
 
+    [HttpGet("{id}")]
+    
+    public IActionResult GetVehiclesById(int id)
+    {
+        List<VehiclesNoNavDTO> vehicles = _dbContext.Vehicles
+            .Include(v => v.Brand)
+            .Include(v => v.TypeOfVehicle)
+            .Include(v => v.Size)
+            .Where(v => v.Id == id)
+            .Select(v => new VehiclesNoNavDTO
+            {
+                Id = v.Id,
+                BrandId = v.Id,
+                Brand = new Brand
+                {
+                    Id = v.Brand.Id,
+                    Make = v.Brand.Make
+                },
+                TypeOfVehicleId = v.Id,
+                Type = new TypeOfVehicle 
+                {
+                    Id = v.TypeOfVehicle.Id,
+                    Type = v.TypeOfVehicle.Type
+                },
+                SizeId = v.Id,
+                Size = new Size
+                {
+                    Id = v.Size.Id,
+                    CubicCentimeters = v.Size.CubicCentimeters
+                },
+                ImageUrl = v.ImageUrl
+            })
+            .ToList();
+
+        return Ok(vehicles);
+    }
 }

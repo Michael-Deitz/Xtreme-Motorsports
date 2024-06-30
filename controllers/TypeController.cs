@@ -20,12 +20,24 @@ public class TypeOfVehicleController : ControllerBase
         _dbContext = context;
     }
 
-
     [HttpGet]
 
     public IActionResult GetAllTypes()
     {
         return Ok(_dbContext.TypeOfVehicles
+        .Select(t => new TypeNoNavDTO
+        {
+            Id = t.Id,
+            Type = t.Type
+        }));
+    }
+
+    [HttpGet("{id}")]
+
+    public IActionResult GetTypesById(int id)
+    {
+        return Ok(_dbContext.TypeOfVehicles
+        .Where(t => t.Id == id)
         .Select(t => new TypeNoNavDTO
         {
             Id = t.Id,

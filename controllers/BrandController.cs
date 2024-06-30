@@ -31,4 +31,17 @@ public class BrandController : ControllerBase
             Make = b.Make
         }));
     }
+
+    [HttpGet("{id}")]
+
+    public IActionResult GetBrandsById(int id)
+    {
+        return Ok(_dbContext.Brands
+        .Where(b => b.Id == id)
+        .Select(b => new BrandNoNavDTO
+        {
+            Id = b.Id,
+            Make = b.Make
+        }));
+    }
 }
