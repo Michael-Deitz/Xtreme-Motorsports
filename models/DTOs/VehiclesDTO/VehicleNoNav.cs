@@ -1,15 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Xtreme.Models;
+namespace Xtreme.Models.DTOs;
 
-public class Vehicles
+public class VehiclesNoNavDTO
 {
     public int Id { get; set; }
     public int BrandId { get; set; }
     public Brand Brand { get; set; }
     [Required]
     public int TypeOfVehicleId { get; set; }
-    public TypeOfVehicle TypeOfVehicle { get; set; }
+    public TypeOfVehicle Type { get; set; }
     [Required]
     public int SizeId { get; set; }
     public Size Size { get; set; }

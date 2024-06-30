@@ -12,7 +12,7 @@ using Xtreme.Data;
 namespace Xtreme_Motorsports.Migrations
 {
     [DbContext(typeof(XtremeDbContext))]
-    [Migration("20240628003140_InitialCreate")]
+    [Migration("20240630184326_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -158,13 +158,13 @@ namespace Xtreme_Motorsports.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "35aa7487-8497-4e0f-9cb5-d5da7e0634d1",
+                            ConcurrencyStamp = "419c78e5-6b5a-4f1b-9aa1-82e038fdac96",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPNoaQ8GuoDG5idgyHn3oSiTRDhrT0gKg963ugdOAfjds4bc3cifCSEsqRIptZ63rA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOGIdVOcnWrdPAIeOaS4euDGcQS4d7TN1OGE4Ua7YIRj17+1BvN10x/peMBgxt/eeA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -175,13 +175,13 @@ namespace Xtreme_Motorsports.Migrations
                         {
                             Id = "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1b01c9f5-8d7e-4053-b060-61257c357fd9",
+                            ConcurrencyStamp = "689511b9-a67e-4bc0-99b6-d1a938f74420",
                             Email = "mechanic@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MECHANIC@EXAMPLE.COM",
                             NormalizedUserName = "MECHANICUSER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAA1NjiC0cPSuCS04XUB6+PwWNb3kIIxH2VOQ1w4DpHXGnElwn9KVHh6xhHLLF18uw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ3RTnIFunjx6ynGn+BwHBsI2jL6PfSciNys1wqYJkN6kIhlXvaQ3jfoQoFo1qbkZQ==",
                             PhoneNumber = "0987654321",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -281,6 +281,155 @@ namespace Xtreme_Motorsports.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Xtreme.Models.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Make")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brands");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Make = "Honda"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Make = "Yamaha"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Make = "Kawasaki"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Make = "KTM"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Make = "Suzuki"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Make = "Polaris"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Make = "Can-Am"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Make = "BMW"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Make = "Ducati"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Make = "Harley-Davidson"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Make = "CF Moto"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Make = "Triumph"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Make = "Beta"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Make = "GasGas"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Make = "Husqvarna"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Make = "Aprilia"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Make = "MV Agusta"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Make = "Royal Enfield"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Make = "Indian Motorcycle"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Make = "Moto Guzzi"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Make = "Benelli"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Make = "Bultaco"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Make = "Sherco"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Make = "Arctic Cat"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Make = "Kymco"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Make = "Hyosung"
+                        });
                 });
 
             modelBuilder.Entity("Xtreme.Models.Size", b =>
@@ -484,7 +633,7 @@ namespace Xtreme_Motorsports.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 6, 27, 19, 31, 39, 826, DateTimeKind.Local).AddTicks(1993),
+                            DateCreated = new DateTime(2024, 6, 30, 13, 43, 26, 223, DateTimeKind.Local).AddTicks(4226),
                             FirstName = "Admin",
                             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             ImageLocation = "https://example.com/default-avatar.jpg",
@@ -493,7 +642,7 @@ namespace Xtreme_Motorsports.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2024, 6, 27, 19, 31, 39, 826, DateTimeKind.Local).AddTicks(2045),
+                            DateCreated = new DateTime(2024, 6, 30, 13, 43, 26, 223, DateTimeKind.Local).AddTicks(4286),
                             FirstName = "Mechanic",
                             IdentityUserId = "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5",
                             ImageLocation = "https://example.com/default-avatar.jpg",
@@ -509,6 +658,9 @@ namespace Xtreme_Motorsports.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("BrandId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("text");
@@ -516,10 +668,16 @@ namespace Xtreme_Motorsports.Migrations
                     b.Property<int>("SizeId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TypeId")
+                    b.Property<int>("TypeOfVehicleId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("SizeId");
+
+                    b.HasIndex("TypeOfVehicleId");
 
                     b.ToTable("Vehicles");
 
@@ -527,16 +685,18 @@ namespace Xtreme_Motorsports.Migrations
                         new
                         {
                             Id = 1,
+                            BrandId = 1,
                             ImageUrl = "https://example.com/car.jpg",
                             SizeId = 1,
-                            TypeId = 1
+                            TypeOfVehicleId = 1
                         },
                         new
                         {
                             Id = 2,
+                            BrandId = 2,
                             ImageUrl = "https://example.com/car.jpg",
                             SizeId = 2,
-                            TypeId = 2
+                            TypeOfVehicleId = 2
                         });
                 });
 
@@ -600,6 +760,33 @@ namespace Xtreme_Motorsports.Migrations
                         .IsRequired();
 
                     b.Navigation("IdentityUser");
+                });
+
+            modelBuilder.Entity("Xtreme.Models.Vehicles", b =>
+                {
+                    b.HasOne("Xtreme.Models.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Xtreme.Models.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Xtreme.Models.TypeOfVehicle", "TypeOfVehicle")
+                        .WithMany()
+                        .HasForeignKey("TypeOfVehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Size");
+
+                    b.Navigation("TypeOfVehicle");
                 });
 #pragma warning restore 612, 618
         }

@@ -110,7 +110,7 @@ namespace Xtreme.Data
             modelBuilder.Entity<Vehicles>().HasData(new Vehicles
             {
                 Id = 1,
-                TypeId = 1,
+                TypeOfVehicleId = 1,
                 SizeId = 1,
                 BrandId = 1,
                 ImageUrl = "https://example.com/car.jpg"
@@ -118,7 +118,7 @@ namespace Xtreme.Data
             new Vehicles
             {
                 Id = 2,
-                TypeId = 2,
+                TypeOfVehicleId = 2,
                 SizeId = 2,
                 BrandId = 2,
                 ImageUrl = "https://example.com/car.jpg"
