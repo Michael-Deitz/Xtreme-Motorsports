@@ -231,7 +231,8 @@ namespace Xtreme_Motorsports.Migrations
                     BrandId = table.Column<int>(type: "integer", nullable: false),
                     TypeOfVehicleId = table.Column<int>(type: "integer", nullable: false),
                     SizeId = table.Column<int>(type: "integer", nullable: false),
-                    ImageUrl = table.Column<string>(type: "text", nullable: false)
+                    ImageUrl = table.Column<string>(type: "text", nullable: false),
+                    UserProfileId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -254,6 +255,12 @@ namespace Xtreme_Motorsports.Migrations
                         principalTable: "TypeOfVehicles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Vehicles_UserProfiles_UserProfileId",
+                        column: x => x.UserProfileId,
+                        principalTable: "UserProfiles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -270,8 +277,8 @@ namespace Xtreme_Motorsports.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "419c78e5-6b5a-4f1b-9aa1-82e038fdac96", "admin@example.com", true, false, null, "ADMIN@EXAMPLE.COM", "ADMINISTRATOR", "AQAAAAIAAYagAAAAEOGIdVOcnWrdPAIeOaS4euDGcQS4d7TN1OGE4Ua7YIRj17+1BvN10x/peMBgxt/eeA==", "1234567890", true, "", false, "Administrator" },
-                    { "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", 0, "689511b9-a67e-4bc0-99b6-d1a938f74420", "mechanic@example.com", true, false, null, "MECHANIC@EXAMPLE.COM", "MECHANICUSER", "AQAAAAIAAYagAAAAEJ3RTnIFunjx6ynGn+BwHBsI2jL6PfSciNys1wqYJkN6kIhlXvaQ3jfoQoFo1qbkZQ==", "0987654321", true, "", false, "MechanicUser" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "84cfcb22-c08d-4c3e-9acf-675b9dc6fce9", "admin@example.com", true, false, null, "ADMIN@EXAMPLE.COM", "ADMINISTRATOR", "AQAAAAIAAYagAAAAEJ5kJBmRqou8Z4UQto7IG+JvNuIHlD/wKIxbkLYFQ0g1w73pEs32h5JKy0xdnXDgTw==", "1234567890", true, "", false, "Administrator" },
+                    { "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", 0, "d57ef5aa-8a8d-4f69-a3dd-4d80804c2c85", "mechanic@example.com", true, false, null, "MECHANIC@EXAMPLE.COM", "MECHANICUSER", "AQAAAAIAAYagAAAAEMiHn1CvSxpS/CBdKB3SsF00pTYa8ADabHEywyF6+4/JhXfBGYbCtcAgVh2MQdUe/w==", "0987654321", true, "", false, "MechanicUser" }
                 });
 
             migrationBuilder.InsertData(
@@ -359,17 +366,17 @@ namespace Xtreme_Motorsports.Migrations
                 columns: new[] { "Id", "DateCreated", "FirstName", "IdentityUserId", "ImageBlob", "ImageLocation", "LastName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 6, 30, 13, 43, 26, 223, DateTimeKind.Local).AddTicks(4226), "Admin", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", null, "https://example.com/default-avatar.jpg", "User" },
-                    { 2, new DateTime(2024, 6, 30, 13, 43, 26, 223, DateTimeKind.Local).AddTicks(4286), "Mechanic", "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", null, "https://example.com/default-avatar.jpg", "User" }
+                    { 1, new DateTime(2024, 6, 30, 16, 8, 22, 90, DateTimeKind.Local).AddTicks(5223), "Admin", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", null, "https://example.com/default-avatar.jpg", "User" },
+                    { 2, new DateTime(2024, 6, 30, 16, 8, 22, 90, DateTimeKind.Local).AddTicks(5277), "Mechanic", "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", null, "https://example.com/default-avatar.jpg", "User" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
-                columns: new[] { "Id", "BrandId", "ImageUrl", "SizeId", "TypeOfVehicleId" },
+                columns: new[] { "Id", "BrandId", "ImageUrl", "SizeId", "TypeOfVehicleId", "UserProfileId" },
                 values: new object[,]
                 {
-                    { 1, 1, "https://example.com/car.jpg", 1, 1 },
-                    { 2, 2, "https://example.com/car.jpg", 2, 2 }
+                    { 1, 1, "https://example.com/car.jpg", 1, 1, 1 },
+                    { 2, 2, "https://example.com/car.jpg", 2, 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -429,6 +436,11 @@ namespace Xtreme_Motorsports.Migrations
                 name: "IX_Vehicles_TypeOfVehicleId",
                 table: "Vehicles",
                 column: "TypeOfVehicleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vehicles_UserProfileId",
+                table: "Vehicles",
+                column: "UserProfileId");
         }
 
         /// <inheritdoc />
@@ -450,16 +462,10 @@ namespace Xtreme_Motorsports.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "UserProfiles");
-
-            migrationBuilder.DropTable(
                 name: "Vehicles");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Brands");
@@ -469,6 +475,12 @@ namespace Xtreme_Motorsports.Migrations
 
             migrationBuilder.DropTable(
                 name: "TypeOfVehicles");
+
+            migrationBuilder.DropTable(
+                name: "UserProfiles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

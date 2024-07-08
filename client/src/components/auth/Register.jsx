@@ -105,8 +105,8 @@ export default function Register({ setLoggedInUser }) {
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   required
-                  maxLength="10"
-                  minLength="10"
+                  maxLength="12"
+                  minLength="12"
                 />
               </FormGroup>
               <FormGroup>

@@ -12,7 +12,7 @@ using Xtreme.Data;
 namespace Xtreme_Motorsports.Migrations
 {
     [DbContext(typeof(XtremeDbContext))]
-    [Migration("20240630184326_InitialCreate")]
+    [Migration("20240630210822_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -158,13 +158,13 @@ namespace Xtreme_Motorsports.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "419c78e5-6b5a-4f1b-9aa1-82e038fdac96",
+                            ConcurrencyStamp = "84cfcb22-c08d-4c3e-9acf-675b9dc6fce9",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOGIdVOcnWrdPAIeOaS4euDGcQS4d7TN1OGE4Ua7YIRj17+1BvN10x/peMBgxt/eeA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ5kJBmRqou8Z4UQto7IG+JvNuIHlD/wKIxbkLYFQ0g1w73pEs32h5JKy0xdnXDgTw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -175,13 +175,13 @@ namespace Xtreme_Motorsports.Migrations
                         {
                             Id = "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "689511b9-a67e-4bc0-99b6-d1a938f74420",
+                            ConcurrencyStamp = "d57ef5aa-8a8d-4f69-a3dd-4d80804c2c85",
                             Email = "mechanic@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MECHANIC@EXAMPLE.COM",
                             NormalizedUserName = "MECHANICUSER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ3RTnIFunjx6ynGn+BwHBsI2jL6PfSciNys1wqYJkN6kIhlXvaQ3jfoQoFo1qbkZQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMiHn1CvSxpS/CBdKB3SsF00pTYa8ADabHEywyF6+4/JhXfBGYbCtcAgVh2MQdUe/w==",
                             PhoneNumber = "0987654321",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -633,7 +633,7 @@ namespace Xtreme_Motorsports.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 6, 30, 13, 43, 26, 223, DateTimeKind.Local).AddTicks(4226),
+                            DateCreated = new DateTime(2024, 6, 30, 16, 8, 22, 90, DateTimeKind.Local).AddTicks(5223),
                             FirstName = "Admin",
                             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             ImageLocation = "https://example.com/default-avatar.jpg",
@@ -642,7 +642,7 @@ namespace Xtreme_Motorsports.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2024, 6, 30, 13, 43, 26, 223, DateTimeKind.Local).AddTicks(4286),
+                            DateCreated = new DateTime(2024, 6, 30, 16, 8, 22, 90, DateTimeKind.Local).AddTicks(5277),
                             FirstName = "Mechanic",
                             IdentityUserId = "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5",
                             ImageLocation = "https://example.com/default-avatar.jpg",
@@ -671,6 +671,9 @@ namespace Xtreme_Motorsports.Migrations
                     b.Property<int>("TypeOfVehicleId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
@@ -678,6 +681,8 @@ namespace Xtreme_Motorsports.Migrations
                     b.HasIndex("SizeId");
 
                     b.HasIndex("TypeOfVehicleId");
+
+                    b.HasIndex("UserProfileId");
 
                     b.ToTable("Vehicles");
 
@@ -688,7 +693,8 @@ namespace Xtreme_Motorsports.Migrations
                             BrandId = 1,
                             ImageUrl = "https://example.com/car.jpg",
                             SizeId = 1,
-                            TypeOfVehicleId = 1
+                            TypeOfVehicleId = 1,
+                            UserProfileId = 1
                         },
                         new
                         {
@@ -696,7 +702,8 @@ namespace Xtreme_Motorsports.Migrations
                             BrandId = 2,
                             ImageUrl = "https://example.com/car.jpg",
                             SizeId = 2,
-                            TypeOfVehicleId = 2
+                            TypeOfVehicleId = 2,
+                            UserProfileId = 2
                         });
                 });
 
@@ -782,11 +789,19 @@ namespace Xtreme_Motorsports.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Xtreme.Models.UserProfile", "UserProfile")
+                        .WithMany()
+                        .HasForeignKey("UserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Brand");
 
                     b.Navigation("Size");
 
                     b.Navigation("TypeOfVehicle");
+
+                    b.Navigation("UserProfile");
                 });
 #pragma warning restore 612, 618
         }

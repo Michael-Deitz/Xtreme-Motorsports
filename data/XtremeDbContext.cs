@@ -111,6 +111,7 @@ namespace Xtreme.Data
             {
                 Id = 1,
                 TypeOfVehicleId = 1,
+                UserProfileId = 1,
                 SizeId = 1,
                 BrandId = 1,
                 ImageUrl = "https://example.com/car.jpg"
@@ -119,6 +120,7 @@ namespace Xtreme.Data
             {
                 Id = 2,
                 TypeOfVehicleId = 2,
+                UserProfileId = 2,
                 SizeId = 2,
                 BrandId = 2,
                 ImageUrl = "https://example.com/car.jpg"

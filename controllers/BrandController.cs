@@ -44,4 +44,26 @@ public class BrandController : ControllerBase
             Make = b.Make
         }));
     }
+
+    [HttpPost("create")]
+
+    public IActionResult BrandCreation(BrandCreateDTO newBrand)
+    {
+        UserProfile userProfile = _dbContext.UserProfiles.Find(newBrand.UserProfileId);
+
+        if(userProfile == null)
+        {
+            return BadRequest("Invalid UserProfileId");
+        }
+
+        Brand BrandToCreate = new Brand()
+        {
+            Make = newBrand.Make
+        };
+
+        _dbContext.Brands.Add(BrandToCreate);
+        _dbContext.SaveChanges();
+
+        return Created($"/api/brand/{BrandToCreate.Id}", BrandToCreate);
+    }
 }

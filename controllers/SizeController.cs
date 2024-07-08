@@ -44,4 +44,26 @@ public class SizeController : ControllerBase
             CubicCentimeters = s.CubicCentimeters
         }));
     }
+
+    [HttpPost("create")]
+
+    public IActionResult SizeCreation(SizeCreateDTO newSize)
+    {
+        UserProfile userProfile = _dbContext.UserProfiles.Find(newSize.UserProfileId);
+
+        if(userProfile == null)
+        {
+            return BadRequest("Invalid UserProfileId");
+        }
+
+        Size SizeToCreate = new Size()
+        {
+            CubicCentimeters = newSize.CubicCentimeters
+        };
+
+        _dbContext.Sizes.Add(SizeToCreate);
+        _dbContext.SaveChanges();
+
+        return Created($"/api/size/{SizeToCreate.Id}", SizeToCreate);
+    }
 }

@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import UserProfileDetails from "./userprofiles/MyUserProfile";
-import UpdateUserProfile from "./userprofiles/UpdateUserProfile";
+// import UserProfileDetails from "./userprofiles/MyUserProfile";
+// import UpdateUserProfile from "./userprofiles/UpdateUserProfile";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (

@@ -44,4 +44,26 @@ public class TypeOfVehicleController : ControllerBase
             Type = t.Type
         }));
     }
+
+    [HttpPost("create")]
+
+    public IActionResult TypeCreation(TypeCreateDTO newType)
+    {
+        UserProfile userProfile = _dbContext.UserProfiles.Find(newType.UserProfileId);
+
+        if(userProfile == null)
+        {
+            return BadRequest("Invalid UserProfileId");
+        }
+
+        TypeOfVehicle TypeToCreate = new TypeOfVehicle()
+        {
+            Type = newType.Type
+        };
+
+        _dbContext.TypeOfVehicles.Add(TypeToCreate);
+        _dbContext.SaveChanges();
+
+        return Created($"/api/type/{TypeToCreate.Id}", TypeToCreate);
+    }
 }
