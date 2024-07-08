@@ -9,26 +9,25 @@ import {
   Navbar,
   NavbarBrand,
   NavbarToggler,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
 import DefaultUser from "../resources/DefaultUser.png";
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
   const [open, setOpen] = useState(false);
-  const [modal, setModal] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleNavbar = () => setOpen(!open);
-  const toggleModal = () => setModal(!modal);
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const handleLogout = () => {
     logout().then(() => {
       setLoggedInUser(null);
-      setOpen(false);
-      setModal(false);
+      setDropdownOpen(false);
     });
   };
 
@@ -55,22 +54,21 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                 </NavItem>
               </Nav>
             </Collapse>
-            <img
-              src={DefaultUser}
-              alt="User Avatar"
-              style={{ cursor: 'pointer', width: '40px', borderRadius: '50%' }}
-              onClick={toggleModal}
-            />
-            <Modal isOpen={modal} toggle={toggleModal}>
-              <ModalHeader toggle={toggleModal}>Logout</ModalHeader>
-              <ModalBody>
-                Are you sure you want to logout?
-              </ModalBody>
-              <ModalFooter>
-                <Button color="secondary" onClick={toggleModal}>Cancel</Button>
-                <Button color="primary" onClick={handleLogout}>Logout</Button>
-              </ModalFooter>
-            </Modal>
+            <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+              <DropdownToggle nav>
+                <img
+                  src={DefaultUser}
+                  alt="User Avatar"
+                  style={{ cursor: 'pointer', width: '40px', borderRadius: '50%' }}
+                />
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem header>{loggedInUser.name}</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem tag={RRNavLink} to="userprofile">My Profile</DropdownItem>
+                <DropdownItem onClick={handleLogout}>Logout</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </>
         ) : (
           <Nav navbar>
