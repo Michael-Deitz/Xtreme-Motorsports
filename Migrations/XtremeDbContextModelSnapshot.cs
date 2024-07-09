@@ -155,13 +155,13 @@ namespace Xtreme_Motorsports.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "84cfcb22-c08d-4c3e-9acf-675b9dc6fce9",
+                            ConcurrencyStamp = "a933dfcb-ce06-4c4a-94b1-1dcbc9036587",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ5kJBmRqou8Z4UQto7IG+JvNuIHlD/wKIxbkLYFQ0g1w73pEs32h5JKy0xdnXDgTw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFHsHsXIqr9MUvoj82+7cg0hDAf6YNiN/12Qpy/N5mJYqJZqk6y07MFPA3EqkjCKHg==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -172,13 +172,13 @@ namespace Xtreme_Motorsports.Migrations
                         {
                             Id = "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d57ef5aa-8a8d-4f69-a3dd-4d80804c2c85",
+                            ConcurrencyStamp = "1c6ddfe3-6aba-4e36-b338-f88f75b19e62",
                             Email = "mechanic@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MECHANIC@EXAMPLE.COM",
                             NormalizedUserName = "MECHANICUSER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMiHn1CvSxpS/CBdKB3SsF00pTYa8ADabHEywyF6+4/JhXfBGYbCtcAgVh2MQdUe/w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHiACU7s2xcz4txB+1zHrSR5Y8mhdKECCddPZnOkpfz3YOLP8acaXfHXdRMB7Mv0Tg==",
                             PhoneNumber = "0987654321",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "",
@@ -630,7 +630,7 @@ namespace Xtreme_Motorsports.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 6, 30, 16, 8, 22, 90, DateTimeKind.Local).AddTicks(5223),
+                            DateCreated = new DateTime(2024, 7, 9, 14, 12, 8, 273, DateTimeKind.Local).AddTicks(7148),
                             FirstName = "Admin",
                             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             ImageLocation = "https://example.com/default-avatar.jpg",
@@ -639,7 +639,7 @@ namespace Xtreme_Motorsports.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2024, 6, 30, 16, 8, 22, 90, DateTimeKind.Local).AddTicks(5277),
+                            DateCreated = new DateTime(2024, 7, 9, 14, 12, 8, 273, DateTimeKind.Local).AddTicks(7229),
                             FirstName = "Mechanic",
                             IdentityUserId = "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5",
                             ImageLocation = "https://example.com/default-avatar.jpg",
@@ -701,6 +701,34 @@ namespace Xtreme_Motorsports.Migrations
                             SizeId = 2,
                             TypeOfVehicleId = 2,
                             UserProfileId = 2
+                        });
+                });
+
+            modelBuilder.Entity("Xtreme.Models.WorkOrder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WorkOrders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Needs carb cleaned",
+                            VehicleId = 2
                         });
                 });
 

@@ -93,6 +93,20 @@ namespace Xtreme_Motorsports.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WorkOrders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    VehicleId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkOrders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -277,8 +291,8 @@ namespace Xtreme_Motorsports.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "84cfcb22-c08d-4c3e-9acf-675b9dc6fce9", "admin@example.com", true, false, null, "ADMIN@EXAMPLE.COM", "ADMINISTRATOR", "AQAAAAIAAYagAAAAEJ5kJBmRqou8Z4UQto7IG+JvNuIHlD/wKIxbkLYFQ0g1w73pEs32h5JKy0xdnXDgTw==", "1234567890", true, "", false, "Administrator" },
-                    { "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", 0, "d57ef5aa-8a8d-4f69-a3dd-4d80804c2c85", "mechanic@example.com", true, false, null, "MECHANIC@EXAMPLE.COM", "MECHANICUSER", "AQAAAAIAAYagAAAAEMiHn1CvSxpS/CBdKB3SsF00pTYa8ADabHEywyF6+4/JhXfBGYbCtcAgVh2MQdUe/w==", "0987654321", true, "", false, "MechanicUser" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "a933dfcb-ce06-4c4a-94b1-1dcbc9036587", "admin@example.com", true, false, null, "ADMIN@EXAMPLE.COM", "ADMINISTRATOR", "AQAAAAIAAYagAAAAEFHsHsXIqr9MUvoj82+7cg0hDAf6YNiN/12Qpy/N5mJYqJZqk6y07MFPA3EqkjCKHg==", "1234567890", true, "", false, "Administrator" },
+                    { "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", 0, "1c6ddfe3-6aba-4e36-b338-f88f75b19e62", "mechanic@example.com", true, false, null, "MECHANIC@EXAMPLE.COM", "MECHANICUSER", "AQAAAAIAAYagAAAAEHiACU7s2xcz4txB+1zHrSR5Y8mhdKECCddPZnOkpfz3YOLP8acaXfHXdRMB7Mv0Tg==", "0987654321", true, "", false, "MechanicUser" }
                 });
 
             migrationBuilder.InsertData(
@@ -353,6 +367,11 @@ namespace Xtreme_Motorsports.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "WorkOrders",
+                columns: new[] { "Id", "Description", "VehicleId" },
+                values: new object[] { 1, "Needs carb cleaned", 2 });
+
+            migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
@@ -366,8 +385,8 @@ namespace Xtreme_Motorsports.Migrations
                 columns: new[] { "Id", "DateCreated", "FirstName", "IdentityUserId", "ImageBlob", "ImageLocation", "LastName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 6, 30, 16, 8, 22, 90, DateTimeKind.Local).AddTicks(5223), "Admin", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", null, "https://example.com/default-avatar.jpg", "User" },
-                    { 2, new DateTime(2024, 6, 30, 16, 8, 22, 90, DateTimeKind.Local).AddTicks(5277), "Mechanic", "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", null, "https://example.com/default-avatar.jpg", "User" }
+                    { 1, new DateTime(2024, 7, 9, 14, 12, 8, 273, DateTimeKind.Local).AddTicks(7148), "Admin", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", null, "https://example.com/default-avatar.jpg", "User" },
+                    { 2, new DateTime(2024, 7, 9, 14, 12, 8, 273, DateTimeKind.Local).AddTicks(7229), "Mechanic", "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", null, "https://example.com/default-avatar.jpg", "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -463,6 +482,9 @@ namespace Xtreme_Motorsports.Migrations
 
             migrationBuilder.DropTable(
                 name: "Vehicles");
+
+            migrationBuilder.DropTable(
+                name: "WorkOrders");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

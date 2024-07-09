@@ -20,6 +20,7 @@ namespace Xtreme.Data
         public DbSet<TypeOfVehicle> TypeOfVehicles { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<WorkOrder> WorkOrders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -145,6 +146,13 @@ namespace Xtreme.Data
             {
                 Id = 4,
                 Type = "Utv"
+            });
+
+            modelBuilder.Entity<WorkOrder>().HasData(new WorkOrder
+            {
+                Id = 1,
+                VehicleId = 2,
+                Description = "Needs carb cleaned"
             });
 
             modelBuilder.Entity<Brand>().HasData(
