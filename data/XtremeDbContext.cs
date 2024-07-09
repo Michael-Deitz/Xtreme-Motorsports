@@ -31,6 +31,8 @@ namespace Xtreme.Data
                 .WithOne()
                 .HasForeignKey<UserProfile>(up => up.IdentityUserId);
 
+            
+
             // Seed roles
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {
@@ -151,7 +153,7 @@ namespace Xtreme.Data
             modelBuilder.Entity<WorkOrder>().HasData(new WorkOrder
             {
                 Id = 1,
-                VehicleId = 2,
+                VehiclesId = 2,
                 Description = "Needs carb cleaned"
             });
 

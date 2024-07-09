@@ -93,20 +93,6 @@ namespace Xtreme_Motorsports.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "WorkOrders",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Description = table.Column<string>(type: "text", nullable: false),
-                    VehicleId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WorkOrders", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -277,6 +263,26 @@ namespace Xtreme_Motorsports.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "WorkOrders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    VehiclesId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkOrders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WorkOrders_Vehicles_VehiclesId",
+                        column: x => x.VehiclesId,
+                        principalTable: "Vehicles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
@@ -291,8 +297,8 @@ namespace Xtreme_Motorsports.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "a933dfcb-ce06-4c4a-94b1-1dcbc9036587", "admin@example.com", true, false, null, "ADMIN@EXAMPLE.COM", "ADMINISTRATOR", "AQAAAAIAAYagAAAAEFHsHsXIqr9MUvoj82+7cg0hDAf6YNiN/12Qpy/N5mJYqJZqk6y07MFPA3EqkjCKHg==", "1234567890", true, "", false, "Administrator" },
-                    { "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", 0, "1c6ddfe3-6aba-4e36-b338-f88f75b19e62", "mechanic@example.com", true, false, null, "MECHANIC@EXAMPLE.COM", "MECHANICUSER", "AQAAAAIAAYagAAAAEHiACU7s2xcz4txB+1zHrSR5Y8mhdKECCddPZnOkpfz3YOLP8acaXfHXdRMB7Mv0Tg==", "0987654321", true, "", false, "MechanicUser" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "bcb293ca-932e-408c-bb75-1e4cb0675b66", "admin@example.com", true, false, null, "ADMIN@EXAMPLE.COM", "ADMINISTRATOR", "AQAAAAIAAYagAAAAEH3aZU2O9qxQmV4Ep7WOtpNaBwUt9f2nf+6W4bMoe0D8rmZ3AsBN02kUjIbXmLM6Vw==", "1234567890", true, "", false, "Administrator" },
+                    { "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", 0, "38c80bc7-2f79-4606-a743-8c65d7a966ce", "mechanic@example.com", true, false, null, "MECHANIC@EXAMPLE.COM", "MECHANICUSER", "AQAAAAIAAYagAAAAEMZssxVWAOq8ZtBJRv46sEmEuvM8U8MOX/CCCwupGHuRAx/TFZhmT7gDhR8SJWPieA==", "0987654321", true, "", false, "MechanicUser" }
                 });
 
             migrationBuilder.InsertData(
@@ -367,11 +373,6 @@ namespace Xtreme_Motorsports.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "WorkOrders",
-                columns: new[] { "Id", "Description", "VehicleId" },
-                values: new object[] { 1, "Needs carb cleaned", 2 });
-
-            migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
@@ -385,8 +386,8 @@ namespace Xtreme_Motorsports.Migrations
                 columns: new[] { "Id", "DateCreated", "FirstName", "IdentityUserId", "ImageBlob", "ImageLocation", "LastName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 7, 9, 14, 12, 8, 273, DateTimeKind.Local).AddTicks(7148), "Admin", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", null, "https://example.com/default-avatar.jpg", "User" },
-                    { 2, new DateTime(2024, 7, 9, 14, 12, 8, 273, DateTimeKind.Local).AddTicks(7229), "Mechanic", "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", null, "https://example.com/default-avatar.jpg", "User" }
+                    { 1, new DateTime(2024, 7, 9, 15, 57, 24, 783, DateTimeKind.Local).AddTicks(2093), "Admin", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", null, "https://example.com/default-avatar.jpg", "User" },
+                    { 2, new DateTime(2024, 7, 9, 15, 57, 24, 783, DateTimeKind.Local).AddTicks(2229), "Mechanic", "fc2b5e3b-9b25-4d7e-a3e4-91f7d3f7c4e5", null, "https://example.com/default-avatar.jpg", "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -397,6 +398,11 @@ namespace Xtreme_Motorsports.Migrations
                     { 1, 1, "https://example.com/car.jpg", 1, 1, 1 },
                     { 2, 2, "https://example.com/car.jpg", 2, 2, 2 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "WorkOrders",
+                columns: new[] { "Id", "Description", "VehiclesId" },
+                values: new object[] { 1, "Needs carb cleaned", 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -460,6 +466,11 @@ namespace Xtreme_Motorsports.Migrations
                 name: "IX_Vehicles_UserProfileId",
                 table: "Vehicles",
                 column: "UserProfileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkOrders_VehiclesId",
+                table: "WorkOrders",
+                column: "VehiclesId");
         }
 
         /// <inheritdoc />
@@ -481,13 +492,13 @@ namespace Xtreme_Motorsports.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Vehicles");
-
-            migrationBuilder.DropTable(
                 name: "WorkOrders");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Vehicles");
 
             migrationBuilder.DropTable(
                 name: "Brands");
