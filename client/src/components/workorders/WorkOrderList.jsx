@@ -22,7 +22,13 @@ export default function WorkOrderList({ loggedInUser }) {
                 {workOrders.map((wo) => (
                    <Card key={wo.id}>
                     <CardBody>
-                        <CardTitle></CardTitle>
+                        <CardTitle className="d-flex justify-content-center">{wo.vehicles.brand.make} {wo.vehicles.size.cubicCentimeters}cc</CardTitle>
+                        <div className="d-flex justify-content-center">{wo.vehicles.typeOfVehicle.type}</div>
+                        <ListGroup className="m-2">
+                            <ListGroupItem>
+                                <Badge>Work To Do :</Badge> {wo.description}
+                            </ListGroupItem>
+                        </ListGroup>
                     </CardBody>
                    </Card> 
                 ))}
