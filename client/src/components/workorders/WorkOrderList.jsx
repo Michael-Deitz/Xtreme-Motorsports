@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Badge, Button, Card, CardBody, CardTitle, Input, ListGroup, ListGroupItem } from "reactstrap";
+import { Badge, Button, ButtonGroup, Card, CardBody, CardTitle, Input, ListGroup, ListGroupItem } from "reactstrap";
 import { getWorkOrders } from "../../managers/workOrderManager";
 import PageContainer from "../PageContainer";
 
@@ -19,6 +19,11 @@ export default function WorkOrderList({ loggedInUser }) {
                 <h1>Work Orders</h1>
             </div>
             <div>
+                <ButtonGroup>
+                    <Button color="success">Add WorkOrder</Button>
+                </ButtonGroup>
+            </div>
+            <div>
                 {workOrders.map((wo) => (
                    <Card key={wo.id}>
                     <CardBody>
@@ -29,6 +34,7 @@ export default function WorkOrderList({ loggedInUser }) {
                                 <Badge>Work To Do :</Badge> {wo.description}
                             </ListGroupItem>
                         </ListGroup>
+                        <Button color="primary">View WorkOrder</Button>
                     </CardBody>
                    </Card> 
                 ))}
