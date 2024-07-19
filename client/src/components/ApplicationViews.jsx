@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import UserProfileDetails from "./userprofiles/MyUserProfile";
 import UpdateUserProfile from "./userprofiles/UpdateUserProfile";
+import WorkOrderList from "./workorders/WorkOrderList";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -17,6 +18,18 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
+        <Route
+          path="workorder"
+        >
+          <Route
+            index
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <WorkOrderList loggedInUser={loggedInUser}/>
+              </AuthorizedRoute>
+            }
+          />
+        </Route>
         <Route
           path="userprofile"
           element={
@@ -33,6 +46,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
+        
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

@@ -48,7 +48,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="work">
+                  <NavLink tag={RRNavLink} to="workorder">
                     Work Orders
                   </NavLink>
                 </NavItem>
