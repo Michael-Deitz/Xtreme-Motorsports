@@ -17,7 +17,7 @@ export default function WorkOrderList({ loggedInUser }) {
     return (
         <PageContainer>
             <div>
-                <h1>Work Orders</h1>
+                <h1 style={{ color: "white"}}>Work Orders</h1>
             </div>
             <div>
                 <ButtonGroup>
