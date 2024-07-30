@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Xtreme.Models;
+namespace Xtreme.Models.DTOs;
 
 public class TypeCreateDTO
 {

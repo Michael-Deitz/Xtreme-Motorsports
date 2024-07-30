@@ -2,9 +2,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Xtreme.Models.DTOs;
 
-public class TypeNoNavDTO
+public class WorkOrderCreate
 {
     public int Id { get; set; }
     [Required]
-    public string Type { get; set; }
+    public string Description { get; set; }
+    public int VehiclesId { get; set; }
 }

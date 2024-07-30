@@ -101,8 +101,7 @@ public class AuthController : ControllerBase
         var roles = User.FindAll(ClaimTypes.Role).Select(r => r.Value).ToList();
         if (profile != null)
         {
-            profile.UserName = User.FindFirstValue(ClaimTypes.Name);
-            profile.Email = User.FindFirstValue(ClaimTypes.Email);
+            
             profile.Roles = roles;
             return Ok(profile);
         }

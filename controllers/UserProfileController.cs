@@ -38,15 +38,18 @@ public class UserProfileController : ControllerBase
             Id = up.Id,
             FirstName = up.FirstName,
             LastName = up.LastName,
-            Email = up.IdentityUser.Email,
-            UserName = up.IdentityUser.UserName,
             IdentityUserId = up.IdentityUserId,
-            PhoneNumber = up.IdentityUser.PhoneNumber,
+            IdentityUser = new IdentityUser
+            {
+                UserName = up.IdentityUser.UserName,
+                Email = up.IdentityUser.Email,
+                PhoneNumber = up.IdentityUser.PhoneNumber
+            },
             Roles = _dbContext.UserRoles
             .Where(ur => ur.UserId == up.IdentityUserId)
             .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
             .ToList()
-        }).OrderBy(up => up.UserName));
+        }).OrderBy(up => up.LastName));
     }
 
     [HttpGet("withroles/{id}")]
@@ -124,8 +127,7 @@ public class UserProfileController : ControllerBase
         {
             return NotFound();
         }
-        user.Email = user.IdentityUser.Email;
-        user.UserName = user.IdentityUser.UserName;
+
         return Ok(user);
     }
 
