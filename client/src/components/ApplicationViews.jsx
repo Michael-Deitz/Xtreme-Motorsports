@@ -5,6 +5,7 @@ import Register from "./auth/Register";
 import UserProfileDetails from "./userprofiles/MyUserProfile";
 import UpdateUserProfile from "./userprofiles/UpdateUserProfile";
 import WorkOrderList from "./workorders/WorkOrderList";
+import WorkOrderCreate from "./workorders/WorkOrderCreate";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -26,6 +27,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
                 <WorkOrderList loggedInUser={loggedInUser}/>
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path="create"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <WorkOrderCreate loggedInUser={loggedInUser}/>
               </AuthorizedRoute>
             }
           />
