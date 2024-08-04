@@ -6,6 +6,7 @@ import UserProfileDetails from "./userprofiles/MyUserProfile";
 import UpdateUserProfile from "./userprofiles/UpdateUserProfile";
 import WorkOrderList from "./workorders/WorkOrderList";
 import WorkOrderCreate from "./workorders/WorkOrderCreate";
+import VehicleList from "./vehicles/VehicleList";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -35,6 +36,18 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
                 <WorkOrderCreate loggedInUser={loggedInUser}/>
+              </AuthorizedRoute>
+            }
+          />
+        </Route>
+        <Route
+          path="vehicle"
+        >
+          <Route
+            index
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <VehicleList/>
               </AuthorizedRoute>
             }
           />

@@ -4,6 +4,7 @@ import PageContainer from "../PageContainer";
 import { Button, Card, CardBody, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Form, FormGroup, Input, Label } from "reactstrap";
 import { useEffect, useState } from "react";
 import { getAllVehiclesWithUsers } from "../../managers/vehicleManager";
+import DefaultImage from "../../resources/DefaultImage.jpg";
 
 export default function WorkOrderCreate() {
     const [vehicles, setVehicles] = useState([]);
@@ -41,7 +42,7 @@ export default function WorkOrderCreate() {
 
     return (
         <PageContainer>
-            <h4>Create A Work Order</h4>
+            <h4 style={{ color: "white" }}>Create A Work Order</h4>
             <Card>
                 <CardBody>
                     <Form onSubmit={handleSubmit}>
@@ -76,6 +77,16 @@ export default function WorkOrderCreate() {
                                 </DropdownMenu>
                             </Dropdown>
                         </FormGroup>
+                        {selectedVehicle && (
+                            <div className="d-flex justify-content-center mb-3">
+                                <img
+                                    src={selectedVehicle.imageUrl || DefaultImage}
+                                    alt={selectedVehicle.brand.make}
+                                    style={{ width: '50%', height: 'auto' }}
+                                    onError={(e) => { e.target.onerror = null; e.target.src = DefaultImage; }}
+                                />
+                            </div>
+                        )}
                         <Button type="submit" color="success">Create WorkOrder</Button>
                     </Form>
                 </CardBody>

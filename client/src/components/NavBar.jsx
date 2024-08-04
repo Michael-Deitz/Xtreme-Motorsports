@@ -52,6 +52,11 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                     Work Orders
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="vehicle">
+                    In Shop
+                  </NavLink>
+                </NavItem>
               </Nav>
             </Collapse>
             <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
