@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllVehiclesWithUsers } from "../../managers/vehicleManager";
 import PageContainer from "../PageContainer";
-import { Card, CardBody, CardTitle } from "reactstrap";
+import { Badge, Button, Card, CardBody, CardTitle, ListGroup, ListGroupItem } from "reactstrap";
 import DefaultImage from "../../resources/DefaultImage.jpg";
 
 export default function VehicleList() {
@@ -17,21 +17,41 @@ export default function VehicleList() {
     return (
         <PageContainer>
             <div>
-                <h1>Vehicles in Shop</h1>
+                <h1 style={{ color: "red"}}>Vehicles in Shop</h1>
             </div>
             {vehicles.map((v) => (
-                <Card>
+                <Card style={{ width: '25rem'}}>
                     <CardBody>
                         <CardTitle className="d-flex justify-content-center">
                                 {v.brand.make} {v.size.cubicCentimeters}cc
                         </CardTitle>
-                        <div>
+                        <div className="d-flex justify-content-center">
                             <img
                                 src={v.imageUrl ? v.imageUrl : DefaultImage} 
                                 alt={v.brand.make}
-                                style={{ width: '50%', height: 'auto' }} 
+                                style={{ width: '50%', height: 'auto'}} 
                                 onError={(e) => { e.target.onerror = null; e.target.src = DefaultImage; }}
                             />
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <ListGroup>
+                                    <ListGroupItem>
+                                        <Badge>Height :</Badge> 
+                                    </ListGroupItem>
+                                    <ListGroupItem>
+                                        <Badge>Width :</Badge> 
+                                    </ListGroupItem>
+                                </ListGroup>
+                            </div>
+                            <div className="col">
+                                <ListGroup>
+                                    <ListGroupItem>
+                                    <Badge>Description :</Badge> 
+                                    </ListGroupItem>
+                                        <Button className="m-5" style={{width: "5rem"}} color="primary" onClick={() => navigate(`/vehicle/${v.id}`)}>Edit</Button> 
+                                </ListGroup>
+                            </div>
                         </div>
                     </CardBody>
                 </Card>
