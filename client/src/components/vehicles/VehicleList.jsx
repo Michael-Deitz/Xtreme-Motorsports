@@ -17,7 +17,7 @@ export default function VehicleList() {
     return (
         <PageContainer>
             <div>
-            <Badge color="black"><h1 style={{ color: "white", textShadow: "1px 1px 0 red, -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red" }}>Vehicles in Shop</h1></Badge>
+            <Badge color="black"><h1 style={{ color: "white", textShadow: "1.6px 1.6px 0 red, -1.6px -1.6px 0 red, 1.6px -1.6px 0 red, -1.6px 1.6px 0 red" }}>Vehicles in Shop</h1></Badge>
             </div>
             {vehicles.map((v) => (
                 <Card style={{ width: '25rem'}}>

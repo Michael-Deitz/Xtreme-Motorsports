@@ -17,7 +17,7 @@ export default function WorkOrderList({ loggedInUser }) {
     return (
         <PageContainer>
             <div>
-                <h1 style={{ color: "white"}}>Work Orders</h1>
+            <Badge color="black"><h1 style={{ color: "white", textShadow: "1.6px 1.6px 0 red, -1.6px -1.6px 0 red, 1.6px -1.6px 0 red, -1.6px 1.6px 0 red" }}>Work Orders</h1></Badge>
             </div>
             <div>
                 <ButtonGroup>
@@ -26,7 +26,7 @@ export default function WorkOrderList({ loggedInUser }) {
             </div>
             <div>
                 {workOrders.map((wo) => (
-                    <Card key={wo.id} style={{ width: "20rem"}} className="shadow-sm">
+                    <Card key={wo.id} style={{ width: "20rem", marginBottom: '20px'}} className="shadow-sm">
                         <CardBody>
                             <CardTitle className="d-flex justify-content-center">
                                 {wo.vehicles.brand.make} {wo.vehicles.size.cubicCentimeters}cc

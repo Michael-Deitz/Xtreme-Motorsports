@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { createWorkOrder } from "../../managers/workOrderManager";
 import PageContainer from "../PageContainer";
-import { Button, Card, CardBody, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Form, FormGroup, Input, Label } from "reactstrap";
+import { Badge, Button, Card, CardBody, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Form, FormGroup, Input, Label } from "reactstrap";
 import { useEffect, useState } from "react";
 import { getAllVehiclesWithUsers } from "../../managers/vehicleManager";
 import DefaultImage from "../../resources/DefaultImage.jpg";
@@ -42,7 +42,7 @@ export default function WorkOrderCreate() {
 
     return (
         <PageContainer>
-            <h4 style={{ color: "white" }}>Create A Work Order</h4>
+            <Badge color="black"><h1 style={{ color: "white", textShadow: "1.6px 1.6px 0 red, -1.6px -1.6px 0 red, 1.6px -1.6px 0 red, -1.6px 1.6px 0 red" }}>Create A Work Order</h1></Badge>
             <Card>
                 <CardBody>
                     <Form onSubmit={handleSubmit}>
