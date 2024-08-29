@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { getAllVehiclesWithUsers } from "../../managers/vehicleManager";
 import DefaultImage from "../../resources/DefaultImage.jpg";
 
-export default function WorkOrderCreate() {
+export default function WorkOrderCreate({ loggedInUser }) {
     const [vehicles, setVehicles] = useState([]);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [selectedVehicle, setSelectedVehicle] = useState(null);
@@ -34,7 +34,8 @@ export default function WorkOrderCreate() {
 
         const workOrder = {
             description: description,
-            vehiclesId: selectedVehicle.id
+            vehiclesId: selectedVehicle.id,
+            userProfileId: loggedInUser.id
         };
 
         createWorkOrder(workOrder).then(() => navigate("/workorder"));
